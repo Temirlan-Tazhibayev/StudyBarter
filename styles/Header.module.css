@@ -1,0 +1,108 @@
+.header {
+    width: 100vw;
+    height: 9vh;
+    background: white;
+    border-top: 2.67px solid #D6D9DC;
+    border-bottom: 0.67px solid #D6D9DC;
+    justify-content: center;
+    /* align-items: center; */
+    display: flex;
+  
+  }
+  
+  /* Topbar Styles */
+  .topbar {
+    width: 60vw;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Logo Styles */
+  .logo {
+    height: 8vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  /* Spanglyph Styles */
+  .glyph {
+    height: 7vh;
+    position: relative;
+    display: flex;
+    align-items: center; /* Vertically centers its children */
+    justify-content: center; /* Horizontally centers its children */
+  }
+  
+  
+  .search {
+    display: flex;
+    /* padding: 0px 8px; */
+    align-items: center;
+  }
+  
+  .s-topbar-searchbar-input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .search-input {
+    /* flex: 1; */
+    border-radius: 6px;
+    border: 1px solid var(--stackoverflow_com__1684x864-Silver-Sand, #BABFC5);
+    background: var(--stackoverflow_com__1684x864-Nero, #FFF);
+    padding: 10px 30px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 10px; /* Изменено значение left для лучшего выравнивания */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* UserNav */
+  .user-nav {
+    display: flex;
+    /* padding-right: 12px; */
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .menubar {
+    display: flex;
+    align-items: flex-start;
+    list-style-type: none;
+    align-items: center; /* Центрирование элементов по вертикали */
+    justify-content: space-between; /* Равномерное распределение пространства между элементами */
+  
+  }
+  
+  .menubar li {
+    height: 24px; /* Задаем фиксированную ширину для всех элементов li */
+    padding: 0 5px; /* Отступы между элементами */
+    box-sizing: border-box; /* Учитываем padding внутри указанной ширины */
+  }
+  
+  
+  .user-card {
+    display: flex;
+    align-items: center;
+  }
+  .user-card-awards {
+    list-style-type: none;
+  
+  }
+  
+  .user-card-avatar {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  

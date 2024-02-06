@@ -1,0 +1,10 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* замените на ваш цвет фона */
+    color: #fff; /* замените на ваш цвет текста */
+    padding: 20px; /* задайте отступы по вашему желанию */
+    box-sizing: border-box;
+}

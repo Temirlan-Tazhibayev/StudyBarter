@@ -1,0 +1,6 @@
+.one {
+    display: inline-flex;
+    padding: 2.667px 210px 0.667px 210px;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,8 +1,9 @@
-import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/public/svg/logo.svg';
+
 import search from '@/public/svg/search.svg';
+
 import userAvatar from '@/public/png/user.png';
 import inboxLogo from '@/public/svg/inbox.svg';
 import achivementsLogo from '@/public/svg/achivements.svg';
@@ -12,7 +13,6 @@ import '@/styles/Header.module.css'
 import React, { useState } from 'react'
 
 export default function Header() {
-  const { t } = useTranslation();
   const [searchText, setSearchText] = useState('');
 
   const handleInputChange = (event) => {
@@ -23,7 +23,7 @@ export default function Header() {
   return (
     <header className='header'>
       <div className="topbar" >
-          <a href='#' className="logo">
+          <a href='/' className="logo">
             <span className="glyph">
               {/* <img src={logo.src} alt="Logo Span"/> */}
               <Image className='span-logo' src={logo} alt='spanLogo' width={40} height={30}></Image>

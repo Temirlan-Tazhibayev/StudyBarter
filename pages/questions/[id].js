@@ -1,3 +1,4 @@
+import LeftSidebar from '@/components/LeftSidebar';
 import iconHome from '@/public/svg/home.svg';
 import Image from 'next/image';
 
@@ -39,19 +40,9 @@ export default function Question({ question }) {
     return (
         <>
             <div className='container'>
-                <div className='leftSidebar'>
-                    <nav className='navigation'>
-                        <ol>
-                            <li>
-                                <a href='#'>
-                                    <Image src={iconHome} alt='iconHome' className='iconHome'></Image>
-                                </a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
+                <LeftSidebar/>
 
-                
+
                 <div className='content'>
                     <div>
                         <div id='question-header' className='d-flex'>
@@ -133,7 +124,6 @@ export default function Question({ question }) {
                                                         </div>
                                                         <div className='user-details'>
                                                             <a href='#'>Username</a>
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -142,10 +132,6 @@ export default function Question({ question }) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div className='sidebar'>
-
                         </div>
                     </div>
                 </div>

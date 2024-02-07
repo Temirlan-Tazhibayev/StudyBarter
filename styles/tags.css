@@ -1,0 +1,57 @@
+.s-input, .s-textarea {
+    --_in-bc: var(--bc-darker);
+    --_in-bc-focus: var(--theme-secondary-400);
+    --_in-bg: var(--white);
+    --_in-br: var(--br-md);
+    --_in-bs-focus: 0 0 0 var(--su-static4) var(--focus-ring);
+    --_in-c: unset;
+    --_in-fc: var(--fc-dark);
+    --_in-fc-focus: var(--black);
+    --_in-fs: var(--fs-body1);
+    --_in-o: unset;
+    --_in-px: .7em;
+    --_in-py: .6em;
+    --_in-placeholder-fc: var(--black-300);
+    scrollbar-color: var(--scrollbar) transparent;
+    background-color: var(--_in-bg);
+    border: var(--su-static1) solid var(--_in-bc);
+    border-radius: var(--_in-br);
+    color: var(--_in-fc);
+    cursor: var(--_in-c);
+    font-size: var(--_in-fs);
+    opacity: var(--_in-o);
+    padding: var(--_in-py) var(--_in-px) var(--_in-py) var(--_in-pl, var(--_in-px));
+    -webkit-appearance: none;
+    font-family: inherit;
+    margin: 0;
+    width: 100%;
+}
+
+
+.s-input-icon {
+    --_ii-fc: unset;
+    --_ii-r: .7em;
+    color: var(--_ii-fc);
+    right: var(--_ii-r);
+    margin-top: calc((var(--su-static8) + var(--su-static1)) * -1);
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+}
+
+
+.s-input-icon.s-input-icon__creditcard, .s-input-icon.s-input-icon__search {
+    --_ii-r: auto;
+    color: var(--black-400);
+    left: .7em;
+}
+
+
+.grid__4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.g12 {
+    --_gap-y: var(--su12);
+    --_gap-x: var(--su12);
+}

@@ -1,15 +1,23 @@
+import Image from 'next/image';
+
+import Head from 'next/head';
+import Link from 'next/link';
+
+import iconHome from '@/public/svg/home.svg';
+import avatarUser from '@/public/svg/avatar-user.svg';
 import LeftSidebar from '@/components/LeftSidebar';
+import Tags from '@/components/Tags';
 
 
 
-export default function Questions({ questions }) {
+export default function Home({ questions }) {
 
   return (
     <>
       <div className='container'>
         <LeftSidebar/>
         <div className='content'>
-          
+            <Tags/>
         </div>
       </div>
     </>

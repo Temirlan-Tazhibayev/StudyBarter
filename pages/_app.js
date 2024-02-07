@@ -2,14 +2,17 @@
 import Header from '../components/Header';
 import Footer from '@/components/Footer';
 import '../styles/globals.css';
-import '../styles/global2.css';
+import '../styles/header.css';
 import '../styles/main.css';
 import '../styles/post.css';
-
+import '../styles/navigation.css';
+import '../styles/tags.css'
 
 import '../styles/question.css'
 
+import '../styles/container.css'
 import Head from 'next/head';
+
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -27,13 +30,6 @@ function MyApp({ Component, pageProps }) {
     </>
   );
 }
-
-
-// export const getServerSideProps = async ({ locale }) => ({
-//   props: {
-//       ...(await serverSideTranslations(locale, ['common']))
-//   }
-// });
 
 
 export default MyApp;

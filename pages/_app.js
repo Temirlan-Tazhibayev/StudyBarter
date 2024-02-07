@@ -1,11 +1,13 @@
-import { appWithTranslation } from 'next-i18next';
 
 import Header from '../components/Header';
 import Footer from '@/components/Footer';
 import '../styles/globals.css';
 import '../styles/global2.css';
 import '../styles/main.css';
+import '../styles/post.css';
 
+
+import '../styles/question.css'
 
 import Head from 'next/head';
 function MyApp({ Component, pageProps }) {
@@ -20,7 +22,7 @@ function MyApp({ Component, pageProps }) {
       <main>
         <Component {...pageProps} />
       </main>
-      <Footer />
+      {/* <Footer /> */}
 
     </>
   );
@@ -34,4 +36,4 @@ function MyApp({ Component, pageProps }) {
 // });
 
 
-export default appWithTranslation(MyApp);
+export default MyApp;

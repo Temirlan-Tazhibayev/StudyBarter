@@ -24,11 +24,12 @@ export default function Home({ questions }) {
             </ol>
           </nav>
         </div>
+        
         <div className='content'>
           
           <div className='mainBar'>
             <div className='d-flex'>
-              <h1>Top Questions</h1>
+              <h1>All Questions</h1>
               <button>
                 <a href='#' className='no-wrap'>Ask Question</a>
               </button>

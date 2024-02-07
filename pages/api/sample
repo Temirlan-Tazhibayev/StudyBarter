@@ -1,0 +1,52 @@
+const mongoose = require('mongoose');
+
+// Подключение к MongoDB
+mongoose.connect('mongodb://localhost:27017/sampleDB', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+const db = mongoose.connection;
+
+// Обработчик ошибок подключения
+db.on('error', console.error.bind(console, 'Connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+
+  // Определение схемы
+  const schema = new mongoose.Schema({
+    title: String,
+    tags: [String],
+    author: String,
+    votes: Number,
+    answers: Number,
+    views: Number,
+    status: String,
+    createdAt: { type: Date, default: Date.now }
+  });
+
+  // Создание модели
+  const Model = mongoose.model('Model', schema);
+
+  // Генерация sample данных
+  const sampleData = [];
+  for (let i = 0; i < 100; i++) {
+    sampleData.push({
+      title: `Sample Title ${i+1}`,
+      tags: ['tag1', 'tag2', 'tag3'],
+      author: `Author ${i+1}`,
+      votes: Math.floor(Math.random() * 100),
+      answers: Math.floor(Math.random() * 50),
+      views: Math.floor(Math.random() * 1000),
+      status: Math.random() > 0.5 ? 'active' : 'inactive'
+    });
+  }
+
+  // Вставка данных в MongoDB
+  Model.insertMany(sampleData)
+    .then(() => {
+      console.log('Sample data inserted successfully');
+      // Закрытие соединения с базой данных
+      mongoose.connection.close();
+    })
+    .catch(err => console.error('Error inserting sample data:', err));
+});

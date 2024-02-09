@@ -6,7 +6,7 @@ import Link from 'next/link';
 import iconHome from '@/public/svg/home.svg';
 import avatarUser from '@/public/svg/avatar-user.svg';
 import LeftSidebar from '@/components/LeftSidebar';
-import Tags from '@/components/Tags';
+import Tags from '@/components/AllTags';
 
 
 

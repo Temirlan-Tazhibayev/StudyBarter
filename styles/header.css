@@ -31,13 +31,13 @@ header {
     align-items: center;
   }
   
-  /* Spanglyph Styles */
   .glyph {
     height: 7vh;
     position: relative;
     display: flex;
     align-items: center; /* Vertically centers its children */
     justify-content: center; /* Horizontally centers its children */
+    color: black;
   }
   
   

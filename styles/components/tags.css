@@ -11,18 +11,6 @@
     padding-bottom: 1rem;
 }
 
-/* Styles for the link/button container */
-.button-container {
-    display: flex;
-    margin-bottom: 1.5rem;
-}
-
-.link {
-    font-size: 1rem; /* Adjust as needed */
-    text-decoration: none;
-    color: #0077cc; /* Adjust as needed */
-}
-
 /* Styles for the input container */
 .input-container {
     position: relative;
@@ -38,6 +26,7 @@
 }
 
 .input-icon {
+    pointer-events: none;
     position: absolute;
     top: 50%;
     left: 0.5rem; /* Adjust as needed */
@@ -68,6 +57,10 @@
 
 .tag-name {
     margin-bottom: 12px;
+}
+
+a .post-tag {
+    color: #0077cc;
 }
 
 .tag-details {

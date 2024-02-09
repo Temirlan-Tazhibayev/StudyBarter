@@ -26,7 +26,7 @@ export default async function handler(req, res) {
             "likes": 0,
             "comments": 0,
             "status": "active",
-            "publish_date": "2024-07-02T13:19:16.000Z",
+            "publish_date": new Date,
             "modified_date": null
         };
   

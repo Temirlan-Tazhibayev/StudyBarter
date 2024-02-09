@@ -6,18 +6,18 @@ import Link from 'next/link';
 import iconHome from '@/public/svg/home.svg';
 import avatarUser from '@/public/svg/avatar-user.svg';
 import LeftSidebar from '@/components/LeftSidebar';
-import Tags from '@/components/Tags';
+import Tags from '@/components/AllTags';
 
 
 
-export default function Home({ questions }) {
+export default function Home({ tags }) {
 
   return (
     <>
       <div className='container'>
         <LeftSidebar/>
         <div className='content'>
-            <Tags/>
+            <Tags tags={tags}/>
         </div>
       </div>
     </>
@@ -27,12 +27,12 @@ export default function Home({ questions }) {
 export async function getStaticProps() {
   try {
     // Отправка GET-запроса к вашему API маршруту
-    const response = await fetch('http://localhost:3000/api/questions');
-    const questions = await response.json(); // Преобразование ответа в JSON
+    const response = await fetch('http://localhost:3000/api/tags');
+    const tags = await response.json(); // Преобразование ответа в JSON
 
-    return { props: { questions } };
+    return { props: { tags } };
   } catch (error) {
     console.error(error);
-    return { props: { questions: [] } }; // Возвращение пустого массива в случае ошибки
+    return { props: { tags: [] } }; // Возвращение пустого массива в случае ошибки
   }
 }

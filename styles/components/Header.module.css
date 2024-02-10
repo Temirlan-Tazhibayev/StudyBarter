@@ -1,6 +1,6 @@
 .topPanel {
     --theme-topbar-height: 56px;
-    
+    --theme-topbar-background-color: white;
     width: 100%;
     z-index: auto;
     --su-static48: 48px;
@@ -29,9 +29,14 @@
     height: 100%;
     display: flex;
     align-items: center;
-    background-color: transparent;
+    background-color: var(--theme-topbar-background-color);
 
     justify-content: flex-start;
+}
+
+.topPanelLogo:hover {
+    filter: brightness(85%);
+
 }
 
 .imgGlyph {
@@ -44,7 +49,8 @@
 
 .topPanelSearchbar {
     padding: 0 var(--su8);
-    width: 800px;
+    width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,8 +110,8 @@
 }
 
 .authorize {
-    overflow-x: auto;
     height: 30px;
+    display: flex;
 }
 
 .topPanelContent {

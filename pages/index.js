@@ -8,6 +8,8 @@ import avatarUser from '@/public/svg/avatar-user.svg';
 import LeftSidebar from '@/components/LeftSidebar';
 import TopQuestions from '@/components/TopQuestions';
 
+import Posts from '@/components/Posts';
+
 export default function Home({ questions }) {
 
   return (
@@ -16,7 +18,10 @@ export default function Home({ questions }) {
         <LeftSidebar/>    
 
         <div className='content'>
-          <TopQuestions questions={questions}/>
+          {/* <TopQuestions questions={questions}/> */}
+
+          <Posts questions={questions}/>
+
           <div className='sideBar'></div>
         </div>
       </div>

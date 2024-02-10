@@ -120,7 +120,7 @@ a, .s-link {
     color: var(--_li-fc);
     cursor: pointer;
     text-decoration: none;
-    user-select: auto;
+    /* user-select: auto; */
 }
 
 

@@ -1,13 +1,14 @@
 .left-sidebar {
     width: 164px;
     flex-shrink: 0;
-    z-index: var(--zi-dropdown);
-    box-shadow: 0 0 0 hsla(0,0%,0%,0.05);
-    transition: box-shadow ease-in-out .1s,transform ease-in-out .1s;
-    transform: translateZ(0);
+    /* z-index: var(--zi-dropdown); */
+    /* box-shadow: 0 0 0 hsla(0,0%,0%,0.05); */
+    /* transition: box-shadow ease-in-out .1s,transform ease-in-out .1s; */
+    /* transform: translateZ(0); */
     box-sizing: border-box;
-
-    position: relative;
+    position: sticky;
+    border-right: 1px solid #6b6666;
+    
 }
 
 .left-sidebar--sticky-container {

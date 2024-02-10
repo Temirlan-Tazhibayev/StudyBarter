@@ -120,5 +120,5 @@ a,
     color: var(--theme-link-color, var(--theme-secondary-400));
     cursor: pointer;
     text-decoration: none;
-    user-select: auto;
+    /* user-select: auto; */
 }

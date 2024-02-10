@@ -18,7 +18,7 @@ export default async function handler(req, res) {
             // "publish_date": "2024-02-07T13:19:16.000Z",
             // "modified_date": null
 
-            "title": "How to start startup with lazy friends",
+            "title": "I tired",
             "text": "I don't know why",
             "tags": ["node.js"],
             "author": "Temirlan Tazhibaev",

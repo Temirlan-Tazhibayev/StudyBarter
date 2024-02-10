@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
       const { query } = req.query; // Получаем текст запроса из параметров запроса
-
+      console.log(query)
       // Проверяем, что query передан
       if (!query) {
         return res.status(400).json({ message: 'Не передан текст запроса' });
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         ]
       }).toArray();
       
-      console.log(searchResults);
+      // console.log(searchResults);
 
       res.status(200).json(searchResults);
     } catch (error) {

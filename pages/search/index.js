@@ -8,32 +8,23 @@ import LeftSidebar from '@/components/LeftSidebar';
 import TopQuestions from '@/components/TopQuestions';
 import SearchQuestions from '@/components/SearchQuestions';
 
+
+import Posts from '@/components/Posts';
+
 export default function Search({ questions }) {
   return (
     <>
       <div className='container'>
         <LeftSidebar/>    
         <div className='content'>
-          <SearchQuestions questions={questions}/>
+          {/* <SearchQuestions questions={questions}/> */}
+
+          <Posts questions={questions}/>
         </div>
       </div>
     </>
   );
 }
-
-// export async function getServerSideProps(context) {
-//   try {
-//     const { query } = context.params;
-//     console.log( query )
-//     const response = await fetch(`http://localhost:3000/api/search?query=${encodeURIComponent(query)}`);
-//     const questions = await response.json();
-
-//     return { props: { questions } };
-//   } catch (error) {
-//     console.error(error);
-//     return { props: { questions: [] } };
-//   }
-// }
 
 export async function getServerSideProps(context) {
   try {

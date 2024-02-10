@@ -7,16 +7,11 @@ import inboxLogo from '@/public/svg/inbox.svg';
 import achivementsLogo from '@/public/svg/achivements.svg';
 import logoutLogo from '@/public/svg/logout.svg';
 
-import styles from '@/styles/Footer.module.css'
+import styles from '@/styles/Footer.module.css';
+
 import React, { useState } from 'react'
 
 export default function Footer() {
-  const [searchText, setSearchText] = useState('');
-
-  const handleInputChange = (event) => {
-    setSearchText(event.target.value);
-    // You can perform any additional logic here if needed
-  };
 
   return (
     <footer className={styles.footer} id='footer'>
@@ -26,6 +21,7 @@ export default function Footer() {
                 <Image src={logo} alt='footer--logo' className={styles.img} width={100}></Image>
             </a>
         </div>
+
         <nav className={styles.siteFooterNav}>
             <div className={styles.siteFooterCol}>
                 <h5 className={styles.siteFooterColTitle}>STUDY BARTER</h5>

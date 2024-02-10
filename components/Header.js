@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/public/svg/logo.svg';
+import iconSearch from '@/public/svg/search.svg'
 
 import search from '@/public/svg/search.svg';
 
@@ -9,72 +10,54 @@ import inboxLogo from '@/public/svg/inbox.svg';
 import achivementsLogo from '@/public/svg/achivements.svg';
 import logoutLogo from '@/public/svg/logout.svg';
 
-import '@/styles/Header.module.css'
+import style from '@/styles/components/Header.module.css'; // Import this
+
 import React, { useState } from 'react'
+import { useRouter } from 'next/router'; // Импортируем useRouter из Next.js
 
 export default function Header() {
   const [searchText, setSearchText] = useState('');
+  const router = useRouter(); // Инициализируем useRouter
+
 
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
-    // You can perform any additional logic here if needed
   };
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    router.push(`/search?query=${searchText}`);
+  };
+  
   return (
-    <header className='header'>
-      <div className="topbar" >
-          <a href='/' className="logo">
-            <span className="glyph">
-              {/* <img src={logo.src} alt="Logo Span"/> */}
-              <Image className='span-logo' src={logo} alt='spanLogo' width={40} height={30}></Image>
+    <header className={style.topPanel}>
+      <div className={style.topPanelContainer} >
+          <a href='/' className={style.topPanelLogo}>
+            <span className={style.imgGlyph}>
+              <Image src={logo} alt='spanLogo' width={50} height={30}/>
               Study Barter
             </span>
           </a>
 
-          <form className="search">
-            <div className="s-topbar-searchbar-input-group">
-              <input
-                  className="search-input"
-                  type="text"
-                  value={searchText}
-                  onChange={handleInputChange}
-                  placeholder="Search..."
-                />
-                {/* <Image className='search-icon' src={search} alt='searchIcon' ></Image> */}
-                <Image className='search-icon' src={search} alt='searchIcon' ></Image>
+          <form className={style.topPanelSearchbar} onSubmit={handleSubmit}>
+            <div className={style.topPanelSearchbarInputGroup}>
+              <input 
+                className={style.topPanelSearchbarInputGroupInput} 
+                placeholder='Search...'
+                value={searchText}
+                onChange={handleInputChange}
+              />
+              <Image className={style.inputIcon} src={iconSearch} alt='Search icon'/>
             </div>
           </form>
 
-          <nav className='user-nav'>
-            <ol className='menubar'>
-              <li>
-                <a href='#' className='user-card'>
-                  <div className='user-card-avatar'>
-                    <Image src={userAvatar} alt='user' width={24} height={24}></Image>
-                  </div>
-                  <div className='user-card-info'>
-                    <ul className='user-card-awards'>
-                      <li className='user-card-rep'>
-                        1
-                      </li>
-                    </ul>
-                  </div>
-                </a>
+
+          <nav className={style.authorize}>
+            <ol className={style.topPanelContent}>
+              <li className={style.topPanelContentElement}>
+                <a href='/#' className={style.btn}>Login</a>
               </li>
-              <li>
-                <a href='#' className='inbox'>
-                  <Image src={inboxLogo} alt='inboxLogo' width={20} height={18}></Image>
-                </a>
-              </li>
-              <li>
-                <a href='#' className='achivements'>
-                  <Image src={achivementsLogo} alt='achivementsLogo' width={20} height={18}></Image>
-                </a>
-              </li>
-              <li>
-                <a href='#' className='logout'>
-                  <Image src={logoutLogo} alt='logoutLogo' width={20} height={18}></Image>
-                </a>
+              <li className={style.topPanelContentElement}>
+                <a href='/#'  className={style.btn}>Sign Up</a>
               </li>
             </ol>
           </nav>

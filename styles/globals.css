@@ -437,34 +437,3 @@ ol, li {
 
 
 
-
-/* Button */
-.btn {
-  /* I did it */
-  --theme-button-bg-color: #1b75d0;
-  --theme-button-font-color: #ffffff;
-  /*  */
-
-  background-color: var(--theme-button-bg-color);
-  border: 1px solid transparent;
-  border-radius: 6px;
-  box-shadow: none;
-  color: var(--theme-button-font-color);
-  font-size: var(13px);
-  /* padding: 25px; */
-  cursor: pointer;
-  display: inline-block;
-  font-family: inherit;
-  font-weight: normal;
-  line-height: calc((13 + 2) / 13);
-  position: relative;
-  outline: none;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-}
-
-/* Filled button */
-.btn:hover {
-  filter: brightness(85%);
-}

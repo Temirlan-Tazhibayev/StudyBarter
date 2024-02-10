@@ -1,21 +1,20 @@
-.top-panel {
+.topPanel {
     --theme-topbar-height: 56px;
-    min-width: auto;
+    
     width: 100%;
-    z-index: var(--zi-navigation-fixed);
+    z-index: auto;
+    --su-static48: 48px;
     background-color: var(--theme-topbar-background-color, var(--white));
     height: var(--theme-topbar-height, calc(var(--su-static48))) + var(--su-static8);
     display: flex;
     border-top: var(--theme-topbar-accent-border, 3px solid black);
     border-bottom: var(--theme-topbar-bottom-border, 1px solid var(--black-225));
     position: relative;
-    align-items: center;
-    box-sizing: border-box;
-    overflow: hidden; /* Добавлено свойство overflow: hidden; */
+
     justify-content: center;
 }
-/* Стили для контейнера верхней панели */
-.top-panel-container {
+
+.topPanelContainer {
     width: var(--s-full);
     max-width: 70%;
     height: 100%;
@@ -25,8 +24,7 @@
     justify-content: space-between;
 }
 
-/* Стили для логотипа */
-.top-panel--logo {
+.topPanelLogo {
     padding: 0 var(--su8);
     height: 100%;
     display: flex;
@@ -36,31 +34,33 @@
     justify-content: flex-start;
 }
 
-.img-glyph {
+.imgGlyph {
     align-items: center;
     justify-content: center;
     position: relative;
     display: flex;;
 }
 
-/* Стили для поля поиска */
-.top-panel--searchbar {
+
+.topPanelSearchbar {
     padding: 0 var(--su8);
+    width: 800px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Стили для контейнера поля поиска */
-.top-panel--searchbar--input-group {
+
+.topPanelSearchbarInputGroup {
     display: flex;
     flex-direction: column;
+    width: 100%;
     align-items: center;
     position: relative;
 }
 
 /* Стили для ввода в поле поиска */
-.top-panel--searchbar--input-group-input {
+.topPanelSearchbarInputGroupInput {
     --_in-bc: var(--bc-darker);
     --_in-bc-focus: var(--theme-secondary-400);
     --_in-bg: var(--white);
@@ -74,7 +74,8 @@
     --_in-px: .6em;
     --_in-py: .5em;
     --_in-placeholder-fc: var(--black-300);
-    scrollbar-color: var(--scrollbar) transparent;
+
+    
     background-color: var(--_in-bg);
     border: var(--su-static1) solid var(--_in-bc);
     border-radius: var(--_in-br);
@@ -93,7 +94,7 @@
 }
 
 /* Стили для иконки поиска */
-.input-icon {
+.inputIcon {
     position: absolute;
     left: 10px;
     top: 50%;
@@ -104,24 +105,73 @@
 
 .authorize {
     overflow-x: auto;
-    /* padding-right: 12px; */
     height: 30px;
 }
 
-.top-panel--content {
+.topPanelContent {
     height: 30px;
     display: flex;
-    margin: 0;
-    padding: 0;
+    /* margin: 0;
+    padding: 0; */
     overflow-x: auto;
-    scrollbar-color: var(--scrollbar) transparent;
+    /* justify-content: center; */
+    justify-content: space-between;
+    align-items: center;
+    /* scrollbar-color: var(--scrollbar) transparent; */
 }
 
-.top-panel--content-element {
+.topPanelContentElement {
     display: inline-flex;
+    flex-direction: row;
+    padding-left: 5px;
+    padding-right: 5px;
     align-self: center;
-    /* height: 5px;
-    weight: 5px; */
-    /* padding-top: var(--su8);
-    padding-bottom: var(--su8); */
+    width: auto;
+    height: var(30px);
+
 }
+
+
+
+/* Button */
+.btn {
+    /* I did it */
+    --theme-button-bg-color: #1b75d0;
+    --theme-button-font-color: #ffffff;
+    
+    justify-content: center;
+
+    background-color: var(--theme-button-bg-color);
+    color: var(--theme-button-font-color);
+
+    border: 1px solid transparent;
+    border-radius: 6px;
+
+    font-size: var(13px);
+    
+    height: 25px;
+    width: 80px;
+
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    
+    font-family: inherit;
+    font-weight: normal;
+    
+    text-align: center;
+    text-decoration: none;
+
+    line-height: var(30px);
+    
+    position: relative;
+    outline: none;
+
+    overflow: hidden;
+  }
+  
+  /* Filled button */
+  .btn:hover {
+    filter: brightness(85%);
+  }

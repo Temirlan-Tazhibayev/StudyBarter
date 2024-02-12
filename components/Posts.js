@@ -13,7 +13,7 @@ export default function Posts({questions}) {
                     <div>
                         <h1>All Questions</h1>
                         <button>
-                            <a href='http://localhost:3000/askquestion' className={style.ask_question}>Ask Question</a>
+                            <a href='http://localhost:3000/questions/ask' className={style.ask_question}>Ask Question</a>
                         </button>
                     </div>
                 </div>
@@ -28,7 +28,7 @@ export default function Posts({questions}) {
                 <div className={style.headline}>
                     <h1>All Questions</h1>
                     <button>
-                        <a href='http://localhost:3000/askquestion' className={style.ask_question}>Ask Question</a>
+                        <a href='http://localhost:3000/questions/ask' className={style.ask_question}>Ask Question</a>
                     </button>
                 </div>
 

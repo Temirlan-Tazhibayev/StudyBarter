@@ -3,9 +3,9 @@ import Header from '@/components/Header';
 import LeftSidebar from '@/components/LeftSidebar';
 import Footer from '@/components/Footer';
 import { useState } from 'react';
-import style from '@/styles/components/posts.module.css'
+import style from '@/styles/components/posts.module.css';
 
-export default function ask () {
+export default function Ask() {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [expectations, setExpectations] = useState('');
@@ -15,6 +15,12 @@ export default function ask () {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
+    // Check if any field is empty
+    if (!title || !text || !expectations || !tags) {
+      alert('Please fill in all fields before submitting the question.');
+      return; // Don't submit the form
+    }
+
     const formData = {
       title,
       text,
@@ -42,16 +48,16 @@ export default function ask () {
     }
   };
 
-
   return (
-    <>      
+    <>
       <div className='container'>
         <LeftSidebar/>    
 
         <div className='content'>
           <div className=''>
             <div className=''>
-              <div className="s-notice s-notice__info p24 w70 lg:w100">
+              <div className="s-notice s-notice__info p24 w70 lg:w100" style={{ paddingLeft: '20px' }}>
+                <br />
                 <h2 className="fs-title fw-normal mb8">Writing a good question</h2>
                 <p className="fs-body2 mb0">
                   You’re ready to <a href="#">ask</a> a <a href="#">programming-related question</a> and this form will help guide you through the process.
@@ -69,7 +75,7 @@ export default function ask () {
                 </ul>
               </div><br />
 
-              <div className='s-notice s-notice__info p24 w70 lg:w100'>
+              <div className='s-notice s-notice__info p24 w70 lg:w100' style={{ paddingLeft: '20px' }}>
                 <p>Please write down your question:</p><br />
                 <form onSubmit={handleSubmit}>
                   <input type="text" name="title" placeholder="Enter your Title" value={title} onChange={(e) => setTitle(e.target.value)} className={style.inputBox} style={{ width: '100%' }} /> <br /><br />
@@ -90,13 +96,10 @@ export default function ask () {
   );
 }
 
-export async function getServerSideProps (context){
+export async function getServerSideProps(context) {
   try {
-    
-    return ({props: {}})
-  } catch (error){
-    return (
-      {props: {"error": error}}
-    )
+    return { props: {} };
+  } catch (error) {
+    return { props: { error: error } };
   }
 }

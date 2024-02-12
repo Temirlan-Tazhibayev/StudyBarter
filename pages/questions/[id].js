@@ -2,7 +2,6 @@ import LeftSidebar from '@/components/LeftSidebar';
 import iconHome from '@/public/svg/home.svg';
 import Image from 'next/image';
 
-
 export async function getStaticPaths() {
     // Fetch список идентификаторов ваших вопросов из вашей базы данных или источника данных
     // Например, если у вас есть список идентификаторов, вы можете его получить из вашего API
@@ -15,22 +14,20 @@ export async function getStaticPaths() {
     }));
   
     return { paths, fallback: false };
-  }
-  
+}
+
 export async function getStaticProps({ params }) {
     try {
-      // Отправка GET-запроса к вашему API маршруту
-      const { id } = params;
-  
-      const response = await fetch(`http://localhost:3000/api/question?id=${id}`);
-      const question = await response.json(); // Преобразование ответа в JSON
-  
-      return { props: { question } };
+        // Отправка GET-запроса к вашему API маршруту
+        const { id } = params;
+        const response = await fetch(`http://localhost:3000/api/question?id=${id}`);
+        const question = await response.json(); // Преобразование ответа в JSON
+        return { props: { question } };
     } catch (error) {
-      console.error(error);
-      return { props: { question: null } }; // Возвращение пустого объекта в случае ошибки
+        console.error(error);
+        return { props: { question: null } }; // Возвращение пустого объекта в случае ошибки
     }
-  }
+}
   
 export default function Question({ question }) {
     if (!question) {
@@ -41,14 +38,12 @@ export default function Question({ question }) {
         <>
             <div className='container'>
                 <LeftSidebar/>
-
-
                 <div className='content'>
                     <div>
                         <div id='question-header' className='d-flex'>
                             <h1 className='ow-break-word mb8 fl1'>
                                 <a className='question-hyperlink'>
-                                    Title
+                                    {question.title}
                                 </a>
                             </h1>
                             <div className='ml12'>
@@ -73,15 +68,18 @@ export default function Question({ question }) {
                                 "0 times?"
                             </div>
                         </div>
-
                         <div className='mainbar'>
                             <div className='question'>
                                 <div className='post-layout'>
                                     <div className='votecell post-layout--left'></div>
                                     <div className='votecell post-layout--right'>
                                         <div className='s-prose' itemProp=''>
-                                            Text
+                                            <p>{question.text}</p> 
+                                            
                                         </div>
+                                        <pre className='lang-py s-code-block'>
+                                            <code className='hljs language-python'><span className='hljs-keyword'>try:</span></code>
+                                        </pre>
                                         <div className='mt24 mb12'>
                                             <div className='post-taglist d-flex gs4 gsy fd-column'>
                                                 <div className='d-flex ps-relative fw-wrap'>

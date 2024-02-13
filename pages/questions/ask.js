@@ -79,7 +79,6 @@ export default function ask () {
                   <button type="submit" className={style.submitButton}>Submit</button>
                 </form>
               </div>
-
             </div>
           </div>
         </div>

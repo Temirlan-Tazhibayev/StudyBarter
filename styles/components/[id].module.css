@@ -25,7 +25,19 @@
     display: flex;
 
     border-right: 1px solid;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1;
 
+}
+
+.headerInput {
+    display: flex;
+    width: 100%;
+}
+.textInput {
+    display: flex;
+    width: 100%;
 }
 .container {
     height: 100%;
@@ -47,8 +59,8 @@
     padding-bottom: 15px;
     padding-inline: 10px;
 }
+
 .modeUser {
-    
     display: flex;
     border-top: 1px solid;
     border-bottom: 1px solid;
@@ -64,6 +76,8 @@
     display: block;
     padding: 5px;
     font-size: large;
+    width: 100%;
+
 }
 .userInfo {
     display: flex;

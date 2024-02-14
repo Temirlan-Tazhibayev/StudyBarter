@@ -51,7 +51,8 @@ export default function Questions({data}) {
     };
 
     fetchData();
-  }, []); // Убираем зависимости из массива, чтобы useEffect сработал только при монтировании компонента
+  }, []); 
+  
   return (
     <>
       <div className='container'>

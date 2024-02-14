@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'; // Добавлен импорт useRou
 import { useEffect, useState } from 'react'; // Заменен импорт useState на useEffect
 import avatarUser from '@/public/svg/avatar-user.svg';
 import LeftSidebar from '@/components/LeftSidebar';
-import TopQuestions from '@/components/TopQuestions';
+import TopQuestions from '@/components/old/TopQuestions';
 import SearchQuestions from '@/components/SearchQuestions';
 
 

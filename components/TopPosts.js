@@ -2,67 +2,36 @@ import Image from 'next/image';
 import avatarUser from '@/public/svg/avatar-user.svg';
 import iconFilter from '@/public/svg/filter.svg';
 
-import style from '@/styles/components/posts.module.css'
-import { useState, useEffect } from 'react';
+import style from '@/styles/components/tposts.module.css'
 
-import AComponent from './f/a';
-
-export default function Posts({questions, page}) {
-    const [showForm, setShowForm] = useState(false);
-
-    console.log({"page":page})
-    const [currentPage, setCurrentPage] = useState(page);
-    
-    const nextPage = () => {
-        setCurrentPage(prevPage => prevPage + 1);
-    };
-      
-    const prevPage = () => {
-        setCurrentPage(prevPage => prevPage - 1);
-    };
-  
-      
-    const toggleForm = () => {
-        setShowForm(!showForm);
-    };
-
+export default function TopPosts({questions}) {
     return (
         <>
             <div className={style.mainBar}>
                 <div className={style.headline}>
-                    <h1>All Questions</h1>
+                    <h1>Top Questions</h1>
                     <button>
                         <a href='http://localhost:3000/questions/ask' className={style.ask_question}>Ask Question</a>
                     </button>
                 </div>
 
                 <div className={style.class_filter}>
-                    <span className={style.count}>0 questions</span>
                     <div>
                         <div className={style.tab_buttons}>
-                            <a href='/questions?tab=new' className={style.tab_button_left}>New</a>
-                            <a href='/questions?tab=week' className={style.tab_button_center}>Week</a>
-                            <a href='/questions?tab=month' className={style.tab_button_right}>Month</a>
+                            <a href='/?tab=new' className={style.tab_button_left}>New</a>
+                            <a href='/?tab=week' className={style.tab_button_center}>Week</a>
+                            <a href='/?tab=month' className={style.tab_button_right}>Month</a>
                         </div>
                     </div>
-                    <div>
-                        <button className={style.filter_button} onClick={toggleForm}>
-                            <Image src={iconFilter} width={16} height={16}/>
-                            <span>Filter</span>
-                        </button>
-                    </div>
                 </div>
-                {showForm && (
-                    <AComponent/>
-                )}
-                
+
                 <div className={style.flushLeft}>
                     <div className={style.questionMiniList}>
                         {questions.map(question => (
                             <div key={question._id} className={style.postSummary}>
                                 <div className={style.postSummaryStats}>
                                     <div className={style.postSummaryStatsItem}>
-                                        <span className={style.postSummaryStatsItemNumber}>{question.likes}</span>
+                                        <span className={style.postSummaryStatsItemNumber}>{question.votes}</span>
                                         <span>votes</span>
                                     </div>
                                     <div className={style.postSummaryStatsItem}>
@@ -115,12 +84,9 @@ export default function Posts({questions, page}) {
                             </div>
                             ))}
                     </div>
-
-                    <div>
-                        <button onClick={prevPage} disabled={currentPage === 1}>Previous Page</button>
-                        <span>Page {currentPage}</span>
-                        <button onClick={nextPage}>Next Page</button>
-                    </div>
+                    <h2 className={style.bottomnotice}>
+                        Looking for more? Browse the complete list of <a href='/questions'>questions</a>, or popular <a href='/tags'>tags</a>.
+                    </h2>
                 </div>
             </div>
         </>

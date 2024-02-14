@@ -1,32 +1,31 @@
 import { useState, useEffect } from 'react';
 
+
 import LeftSidebar from '@/components/LeftSidebar';
 import Posts from '@/components/Posts';
 
-export default function Questions() {
+export default function Questions({data}) {
   const [questions, setQuestions] = useState([]);
-  const [currentPage, setCurrentPage] = useState(null); // Установите значение по умолчанию для currentPage
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const itemsPerPage = 10; // Количество элементов на странице не изменяется, поэтому не нужно хранить его в состоянии
+  const itemsPerPage = 10;
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const tab = urlParams.get('tab');
-    const page = parseInt(urlParams.get('page')) || 1; // Парсим строку в целое число
+    const page = parseInt(urlParams.get('page')) || 1;
 
-
+    setCurrentPage(page);
     const fetchData = async () => {
       try {
         let apiUrl = 'http://localhost:3000/api/questions';
 
-        // Добавляем параметры запроса, включая текущую страницу и количество элементов на странице
         const params = {
           tab: tab,
-          page: page, // Указываем текущую страницу
-          limit: itemsPerPage, // Указываем количество элементов на странице
+          page: page,
+          limit: itemsPerPage,
         };
 
-        // Формируем строку запроса на основе параметров
         const queryString = new URLSearchParams(params).toString();
         if (queryString) {
           apiUrl += `?${queryString}`;
@@ -36,10 +35,7 @@ export default function Questions() {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            // Другие заголовки...
           },
-          // Другие параметры запроса, если необходимо
-          // body: JSON.stringify(data),
         });
 
         if (!response.ok) {
@@ -47,17 +43,15 @@ export default function Questions() {
         }
 
         const data = await response.json();
-        
-        setCurrentPage(params.page);
+
         setQuestions(data);
       } catch (error) {
         console.error(error);
-      }
+      } 
     };
 
     fetchData();
-  }, [questions, currentPage]); // Добавляем currentPage в зависимости, чтобы запрос обновлялся при изменении страницы
-
+  }, []); // Убираем зависимости из массива, чтобы useEffect сработал только при монтировании компонента
   return (
     <>
       <div className='container'>
@@ -73,20 +67,20 @@ export default function Questions() {
                 <div className='sidebarWidgets_tags_content'>
                   <div className='sidebartags_ss'>
                     <ul className='currenttags'>
-                    {(() => {
-                      const uniqueTags = new Set();
-                      questions.forEach(question => {
-                        question.tags.forEach(tag => {
-                          uniqueTags.add(tag);
+                      {(() => {
+                        const uniqueTags = new Set();
+                        questions.forEach(question => {
+                          question.tags.forEach(tag => {
+                            uniqueTags.add(tag);
+                          });
                         });
-                      });
-  
-                      return Array.from(uniqueTags).map(tag => (
-                        <li key={tag}>
-                          <a className="postTag">{tag}</a>
-                        </li>
-                      ));
-                    })()}
+
+                        return Array.from(uniqueTags).map(tag => (
+                          <li key={tag}>
+                            <a className="postTag">{tag}</a>
+                          </li>
+                        ));
+                      })()}
                     </ul>
                   </div>
                 </div>

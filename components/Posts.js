@@ -9,16 +9,14 @@ import AComponent from './f/a';
 
 export default function Posts({questions, page}) {
     const [showForm, setShowForm] = useState(false);
-
-    console.log({"page":page})
-    const [currentPage, setCurrentPage] = useState(page);
+ 
     
     const nextPage = () => {
-        setCurrentPage(prevPage => prevPage + 1);
+        page = page+1 ;
     };
       
     const prevPage = () => {
-        setCurrentPage(prevPage => prevPage - 1);
+        page = page - 1 ;
     };
   
       
@@ -117,9 +115,9 @@ export default function Posts({questions, page}) {
                     </div>
 
                     <div>
-                        <button onClick={prevPage} disabled={currentPage === 1}>Previous Page</button>
-                        <span>Page {currentPage}</span>
-                        <button onClick={nextPage}>Next Page</button>
+                        <button href={"/questions?page="+page-1} onClick={prevPage} disabled={page === 1}>Previous Page</button>
+                        <span>Page {page}</span>
+                        <button href={"/questions?page="+page+1}>Next Page</button>
                     </div>
                 </div>
             </div>

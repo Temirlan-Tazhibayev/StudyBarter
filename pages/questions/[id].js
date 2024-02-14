@@ -4,34 +4,9 @@ import Image from 'next/image';
 
 import style from '@/styles/components/[id].module.css';
 
-export async function getStaticPaths() {
-    const response = await fetch('http://localhost:3000/api/questions'); // Вам нужно создать маршрут для получения списка идентификаторов
-    const questions = await response.json();
-  
-    const paths = questions.map(question => ({
-      params: { id: question._id },
-    }));
-  
-    return { paths, fallback: false };
-}
 
-export async function getStaticProps({ params }) {
-    try {
-        const { id } = params;
-        const response = await fetch(`http://localhost:3000/api/question?id=${id}`);
-        const question = await response.json(); // Преобразование ответа в JSON
-        return { props: { question } };
-    } catch (error) {
-        console.error(error);
-        return { props: { question: null } }; // Возвращение пустого объекта в случае ошибки
-    }
-}
   
 export default function Question({ question }) {
-    if (!question) {
-        return <div>Вопрос не найден</div>;
-    }
-
     return (
         <>
             <div className={style.container}>
@@ -42,9 +17,7 @@ export default function Question({ question }) {
                             
                             
                             <h1>
-                                <a className={style.questionHyperlink}>
-                                    {question.title}
-                                </a>
+                                {question.title}
                             </h1>
                             <button href="/questions/ask">
                                 Ask Question
@@ -91,25 +64,24 @@ export default function Question({ question }) {
                                         </div>
                                          
                                         <div className={style.postdetails}>
-                                            <div >
-                                                {/* <div> */}
-                                                    <ul className={style.postdetailslist}>
+                                            {question.tags && question.tags.length > 0 && (
+                                                <ul className={style.postdetailslist}>
                                                     {question.tags.map(tag => (
                                                         <li key={tag}>
                                                             <a className={style.postTag}>{tag}</a>
                                                         </li>
                                                     ))}
-                                                    </ul>
-                                                {/* </div> */}
-                                            </div>
+                                                </ul>
+                                            )}
                                         </div>
+
                                         <div className='mb0'>
                                             <div className='mt16 d-flex gs8 gsy fw-wrap jc-end ai-start pt4 mb16'>
                                                 <div className='mr16 fl1 w96'>
                                                     <div className='pt2'>
                                                         <div className='d-flex gs8 fw-wrap'>
                                                             <div>
-                                                                <a>Edit</a>
+                                                                <a href={'/questions/edit/'+question._id}>Edit</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -126,4 +98,29 @@ export default function Question({ question }) {
             </div>
         </>
     );
+}
+
+
+
+export async function getStaticPaths() {
+    const response = await fetch('http://localhost:3000/api/questions'); // Вам нужно создать маршрут для получения списка идентификаторов
+    const questions = await response.json();
+  
+    const paths = questions.map(question => ({
+      params: { id: question._id },
+    }));
+  
+    return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+    try {
+        const { id } = params;
+        const response = await fetch(`http://localhost:3000/api/question?id=${id}`);
+        const question = await response.json(); // Преобразование ответа в JSON
+        return { props: { question } };
+    } catch (error) {
+        console.error(error);
+        return { props: { question: null } }; // Возвращение пустого объекта в случае ошибки
+    }
 }

@@ -18,7 +18,7 @@ export default async function handler(req, res) {
                 "author": "Temirlan Tazhibaev",
                 "views": 0,
                 "likes": 0,
-                "comments": 0,
+                "answers": 0,
                 "status": "active",
                 "publish_date": new Date("2024-02-13T12:00:00.000Z"),
                 "modified_date": null
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -50,7 +50,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -66,7 +66,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -82,7 +82,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -98,7 +98,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -115,7 +115,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -132,7 +132,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -148,7 +148,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -165,7 +165,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -181,7 +181,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -198,7 +198,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -214,7 +214,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -230,7 +230,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -246,7 +246,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -262,7 +262,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -279,7 +279,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -296,7 +296,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -312,7 +312,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -331,7 +331,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -347,7 +347,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-02-13T12:00:00.000Z"),
               "modified_date": null
@@ -363,7 +363,7 @@ export default async function handler(req, res) {
               "author": "Temirlan Tazhibaev",
               "views": 0,
               "likes": 0,
-              "comments": 0,
+              "answers": 0,
               "status": "active",
               "publish_date": new Date("2024-04-13T12:00:00.000Z"),
               "modified_date": null

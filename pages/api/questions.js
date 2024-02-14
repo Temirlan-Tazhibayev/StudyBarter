@@ -7,11 +7,19 @@ export default async function handler(req, res) {
       const collection = db.collection('Questions');
        
       let { tab, query, page, limit } = req.query;
-      // console.log(req.query);
+      console.log(req.query);
       page = parseInt(page) || 1; // По умолчанию показываем первую страницу
       limit = parseInt(limit) || 10; // По умолчанию 10 элементов на странице
-
+      
       let dbQuery = {};
+      let searchQuery = {};
+
+      if (query) {
+        searchQuery ={$or: [
+          { title: { $regex: query, $options: 'i' } }, // $regex используется для поиска с учетом регистра
+          { text: { $regex: query, $options: 'i' } }
+        ]}
+      }
       if (tab == 'new') {
         const twelveHoursAgo = new Date();
         twelveHoursAgo.setHours(twelveHoursAgo.getHours() - 12);
@@ -32,7 +40,7 @@ export default async function handler(req, res) {
       const offset = (page - 1) * limit;
 
       // Запрос к базе данных с учетом пагинации
-      const questions = await collection.find(dbQuery).skip(offset).limit(limit).toArray();
+      const questions = await collection.find(searchQuery, dbQuery).skip(offset).limit(limit).toArray();
       
       res.status(200).json(questions);
     } catch (error) {

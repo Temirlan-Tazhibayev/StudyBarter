@@ -9,14 +9,15 @@ import LeftSidebar from '@/components/navigation/LeftSidebar';
 import Tags from '@/components/tags/AllTags';
 
 
+import style from '@/styles/pages/Tags.module.css';
 
 export default function Home({ tags }) {
 
   return (
     <>
-      <div className='container'>
+      <div className={style.container}>
         <LeftSidebar/>
-        <div className='content'>
+        <div className={style.content}>
             <Tags tags={tags}/>
         </div>
       </div>

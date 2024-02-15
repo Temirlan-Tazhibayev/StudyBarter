@@ -222,13 +222,6 @@ a, .s-link {
 }
 
 
-.post-signature {
-    text-align: left;
-    vertical-align: top;
-    width: 200px;
-    background-color: azure;
-}
-
 .mt16 {
     margin-top: var(--su16) !important;
 }
@@ -279,11 +272,6 @@ a, .s-link {
 }
 
 
-.post-signature {
-    text-align: left;
-    vertical-align: top;
-    width: 200px;
-}
 
 .owner {
     border-radius: var(--br-sm);

@@ -4,7 +4,7 @@ export function PostsRightbar({ questions }) {
     return (
         <>
             <div className={style.sideBar}>
-                <div className='sidebar-elements'>
+                <div className={style.sidebarElements}>
                     <div className={style.sidebarWidgets_tags}>
                         <div className={style.sidebarWidgets_tags_header}>
                             <h2>Current Tags</h2>

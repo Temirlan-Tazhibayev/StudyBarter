@@ -3,7 +3,7 @@ import Header from '@/components/navigation/Header';
 import LeftSidebar from '@/components/navigation/LeftSidebar';
 import Footer from '@/components/navigation/Footer';
 import { useState } from 'react';
-import style from '@/styles/components/posts.module.css';
+import style from '@/styles/pages/posts.module.css';
 
 export default function Ask() {
   const [title, setTitle] = useState('');
@@ -50,10 +50,10 @@ export default function Ask() {
 
   return (
     <>
-      <div className='container'>
+      <div className={style.container}>
         <LeftSidebar/>    
 
-        <div className='content'>
+        <div className={style.content}>
           <div className=''>
             <div className=''>
               <div className="s-notice s-notice__info p24 w70 lg:w100" style={{ paddingLeft: '20px' }}>

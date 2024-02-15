@@ -13,7 +13,9 @@
     padding-right: 15px;
 
 }
-
+.sidebarElements {
+    width: 100%;
+}
 .sidebartags_ss {
     flex-wrap: wrap;
     gap: 4px;

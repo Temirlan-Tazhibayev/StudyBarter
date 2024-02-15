@@ -17,11 +17,11 @@ export default function LeftSidebar() {
               <li>
                 <ol className={style.navLinks}>
                   <li className={style.navElement}>
-                    <a href='/'>
-                      <div className={style.navElementCon}>
+                    <a href='/' className={style.navElementCon}>
+                      {/* <div className={style.navElementCon}> */}
                         <Image src={iconHome} alt='iconHome' className='iconHome'></Image>
                         <span>Home</span>
-                      </div>
+                      {/* </div> */}
                     </a>
                   </li>
 

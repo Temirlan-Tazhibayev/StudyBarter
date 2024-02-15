@@ -279,6 +279,8 @@ padding: 10px;
 
 .tab_buttons {
     display: flex;
+    color: var(--color-for-button-font);
+
 }
 
 .postSummaryContentTitle a {

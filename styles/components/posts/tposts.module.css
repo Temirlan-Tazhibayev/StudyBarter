@@ -18,7 +18,11 @@
 
 
 .ask_question {
-    flex-wrap: nowrap;
+    border: 1px solid var(--theme-button-bg-color);
+    background-color: var(--theme-button-bg-color);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 
@@ -38,6 +42,8 @@
     justify-content: space-between;
     padding: 15px;
     border-bottom: 1px solid #6b6666;
+    align-items: center;
+
 }
 
 .questionMiniList {
@@ -201,6 +207,7 @@ padding: 10px;
 
 .tab_buttons {
     display: flex;
+    color: var(--color-for-button-font);
 }
 
 .postSummaryContentTitle a {

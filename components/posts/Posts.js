@@ -91,10 +91,8 @@ export default function Posts({ questions, page}) {
         <>
             <div className={style.mainBar}>
                 <div className={style.headline}>
-                    <h1>All Questions</h1>
-                    <button>
-                        <a href='http://localhost:3000/questions/ask' className={style.ask_question}>Ask Question</a>
-                    </button>
+                    <h1>All Questions</h1>                    
+                    <a href='http://localhost:3000/questions/ask' className={style.ask_question}>Ask Question</a>
                 </div>
 
                 <div className={style.class_filter}>

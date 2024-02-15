@@ -10,9 +10,7 @@ export default function TopPosts({questions}) {
             <div className={style.mainBar}>
                 <div className={style.headline}>
                     <h1>Top Questions</h1>
-                    <button>
                         <a href='http://localhost:3000/questions/ask' className={style.ask_question}>Ask Question</a>
-                    </button>
                 </div>
 
                 <div className={style.class_filter}>

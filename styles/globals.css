@@ -39,6 +39,11 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 
+
+  --color-for-button-font: #1B75D0;
+
+  --theme-button-bg-color: #1b75d0;
+  --theme-button-font-color: #ffffff;
   /* My variables */
   --su-base: 1;
   --su-static1: 1px;
@@ -319,119 +324,27 @@ body {
 }
 
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  color: black;
-  font-size: 100%;
-  vertical-align: baseline;
-}
+
 
 
 a {
-  color: var(--theme-link-color, var(--theme-secondary-400));
+  /* color: #1B75D0; */
   text-decoration: none;
   cursor: pointer;
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
 
 div {
   display: block;
 }
 
 
-ul {
+ul, li  {
   list-style: none;
-
-}
-
-.ml0 {
-  margin-left: 0 !important;
-}
-
-
-.ps-relative {
-  position: relative !important
-}
-
-.d-flex {
-  display: flex !important;
-}
-
-.d-inline {
-  display: inline !important;
-}
-
-.fl1 {
-  flex: 1 auto !important;
-}
-
-.fs-body3 {
-  font-size: var(--fs-body3) !important;
-}
-
-.ml12 {
-  margin-left: var(--su12) !important;
-}
-
-.ws-nowrap {
-  white-space: nowrap !important;
-}
-
-.ai-center {
-  align-items: center !important;
-}
-
-.mb16 {
-  margin-bottom: var(--su16) !important;
-}
-
-.fs-headline1 {
-    font-size: var(--fs-headline1) !important;
-}
-
-.fs-body2 {
-  font-size: var(--fs-body2) !important;
-}
-
-
-.fs-body2 {
-  font-size: var(--fs-body1) !important;
 }
 
 
 
-.post-tag, .geo-tag, .container .chosen-choices .search-choice, .container .chosen-container-multi .chosen-choices li.search-choice {
-  color: var(--theme-tag-color, var(--theme-secondary-500));
-  background-color: var(--theme-tag-background-color, var(--theme-secondary-100));
-  border-color: var(--theme-tag-border-color, transparent);
 
-  display: inline-block;
-  padding: .4em .5em;
-  margin: var(--su2) var(--su2) var(--su2) 0;
-
-  font-size: var(--fs-fine);
-  line-height: 1;
-  white-space: nowrap;
-  text-decoration: none;
-  text-align: center;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: var(--br-sm);
+a, span, div {
+  color: inherit
 }
-
-
-ol, li {
-  list-style-type: none;
-}
-
-
-

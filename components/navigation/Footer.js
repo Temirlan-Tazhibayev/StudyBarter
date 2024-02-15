@@ -7,7 +7,7 @@ import inboxLogo from '@/public/svg/inbox.svg';
 import achivementsLogo from '@/public/svg/achivements.svg';
 import logoutLogo from '@/public/svg/logout.svg';
 
-import styles from '@/styles/Footer.module.css';
+import styles from '@/styles/components/navigation/Footer.module.css';
 
 import React, { useState } from 'react'
 

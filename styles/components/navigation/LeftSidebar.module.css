@@ -1,0 +1,21 @@
+.index {
+    flex: 1;
+    border-right: 1px solid #6b6666;
+    display: flex;
+}
+
+.stickyContainer {
+    position: fixed;
+    padding-top: var(--su24);
+}
+
+.navLinks {
+    padding: 0;
+    margin: 0 0 var(--su12);
+    list-style: none;
+}
+.navElement {
+    position: relative;
+    display: flex;
+    padding-block: 5px;
+}

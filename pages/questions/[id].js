@@ -1,4 +1,4 @@
-import LeftSidebar from '@/components/LeftSidebar';
+import LeftSidebar from '@/components/navigation/LeftSidebar';
 import iconHome from '@/public/svg/home.svg';
 import Image from 'next/image';
 

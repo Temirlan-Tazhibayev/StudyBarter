@@ -1,6 +1,6 @@
 // pages/questions/edit/[id].js
 
-import LeftSidebar from '@/components/LeftSidebar'
+import LeftSidebar from '@/components/navigation/LeftSidebar'
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 

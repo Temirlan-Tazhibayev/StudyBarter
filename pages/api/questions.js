@@ -5,43 +5,55 @@ export default async function handler(req, res) {
     try {
       const db = await connectToDatabase();
       const collection = db.collection('Questions');
-       
+
       let { tab, query, page, limit } = req.query;
       console.log(req.query);
       page = parseInt(page) || 1; // По умолчанию показываем первую страницу
       limit = parseInt(limit) || 10; // По умолчанию 10 элементов на странице
-      
-      let dbQuery = {};
-      let searchQuery = {};
 
+      let aggregationPipeline = [];
+
+      // Формируем агрегационный пайплайн
       if (query) {
-        searchQuery ={$or: [
-          { title: { $regex: query, $options: 'i' } }, // $regex используется для поиска с учетом регистра
-          { text: { $regex: query, $options: 'i' } }
-        ]}
+        aggregationPipeline.push({
+          $match: {
+            $or: [
+              { title: { $regex: query, $options: 'i' } },
+              { text: { $regex: query, $options: 'i' } }
+            ]
+          }
+        });
       }
       if (tab == 'new') {
         const twelveHoursAgo = new Date();
         twelveHoursAgo.setHours(twelveHoursAgo.getHours() - 12);
-        dbQuery = { publish_date: { $gte: twelveHoursAgo } };
+        aggregationPipeline.push({
+          $match: { publish_date: { $gte: twelveHoursAgo } }
+        });
       } 
       if (tab == 'week') {
         const weekAgo = new Date();
         weekAgo.setDate(weekAgo.getDate() - 7);
-        dbQuery = { publish_date: { $gte: weekAgo } };
+        aggregationPipeline.push({
+          $match: { publish_date: { $gte: weekAgo } }
+        });
       } 
       if (tab == 'month') {
         const oneMonthAgo = new Date();
         oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-        dbQuery = { publish_date: { $gte: oneMonthAgo } };
+        aggregationPipeline.push({
+          $match: { publish_date: { $gte: oneMonthAgo } }
+        });
       }  
 
-      // Вычисляем смещение (offset) для пагинации
+      // Добавляем этапы пагинации
       const offset = (page - 1) * limit;
+      aggregationPipeline.push({ $skip: offset });
+      aggregationPipeline.push({ $limit: limit });
 
-      // Запрос к базе данных с учетом пагинации
-      const questions = await collection.find(searchQuery, dbQuery).skip(offset).limit(limit).toArray();
-      
+      // Выполняем агрегацию
+      const questions = await collection.aggregate(aggregationPipeline).toArray();
+
       res.status(200).json(questions);
     } catch (error) {
       console.error(error);

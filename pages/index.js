@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import LeftSidebar from '@/components/LeftSidebar';
-import TopPosts from '@/components/TopPosts';
+import LeftSidebar from '@/components/navigation/LeftSidebar';
+import TopPosts from '@/components/posts/TopPosts';
+import { PostsRightbar } from '@/components/navigation/PostsRightbar';
 
+import style from '@/styles/pages/posts.module.css';
 export default function Home() {
   const [questions, setQuestions] = useState([]);
 
@@ -53,39 +55,11 @@ export default function Home() {
 
   return (
     <>
-      <div className='container'>
-        <LeftSidebar />
-        <div className='content'>
+      <div className={style.container}>
+        <LeftSidebar/>
+          <div className={style.content}>
           <TopPosts questions={questions} />
-          <div className='sideBar'>
-            <div className='sidebar-elements'>
-              <div className='sidebarWidgets_tags'>
-                <div className='sidebarWidgets_tags_header'>
-                  <h2>Current Tags</h2>
-                </div>
-                <div className='sidebarWidgets_tags_content'>
-                  <div className='sidebartags_ss'>
-                    <ul className='currenttags'>
-                    {(() => {
-                      const uniqueTags = new Set();
-                      questions.forEach(question => {
-                        question.tags.forEach(tag => {
-                          uniqueTags.add(tag);
-                        });
-                      });
-
-                      return Array.from(uniqueTags).map(tag => (
-                        <li key={tag}>
-                          <a className="postTag">{tag}</a>
-                        </li>
-                      ));
-                    })()}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <PostsRightbar questions={questions}/>
         </div>
       </div>
     </>

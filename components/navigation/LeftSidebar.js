@@ -5,46 +5,45 @@ import iconHome from '@/public/svg/home.svg';
 import iconQuestions from '@/public/svg/questions.svg';
 import iconTags from '@/public/svg/tags.svg';
 
+import style from '@/styles/components/navigation/LeftSidebar.module.css';
+
 export default function LeftSidebar() {
   return (
     <>
-      <div className='left-sidebar'>
-        <div className='left-sidebar--sticky-container'>
+      <div className={style.index}>
+        <div className={style.stickyContainer}>
           <nav role='navigation'>
-            <ol className='nav-links'>
+            <ol className={style.navLinks}>
               <li>
-                <ol className='nav-links'>
-                  <li className='ps-relative'>
-                    <a href='/' className='pl8'>
-                      <div className='d-flex ai-center'>
+                <ol className={style.navLinks}>
+                  <li className={style.navElement}>
+                    <a href='/'>
+                      <div className={style.navElementCon}>
                         <Image src={iconHome} alt='iconHome' className='iconHome'></Image>
                         <span>Home</span>
                       </div>
                     </a>
                   </li>
 
-                  <li className='ps-relative'>
-                    <a href='/questions' className='pl8'>
-                      <div className='d-flex ai-center'>
+                  <li className={style.navElement}>
+                    <a href='/questions'>
+                      <div className={style.navElementCon}>
                         <Image src={iconQuestions} alt='iconQuestions' className='iconQuestions'></Image>
                         <span>Questions</span>
                       </div>
                     </a>
                   </li>
 
-                  <li className='ps-relative'>
-                    <a href='/tags' className='pl8'>
-                      <div className='d-flex ai-center'>
+                  <li className={style.navElement}>
+                    <a href='/tags'>
+                      <div className={style.navElementCon}>
                         <Image src={iconTags} alt='iconTags' className='iconTags'></Image>
                         <span>Tags</span>
                       </div>
                     </a>
                   </li>
-
                 </ol>
-
               </li>
-
             </ol>
           </nav>
         </div>

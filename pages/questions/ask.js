@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import Header from '@/components/Header';
-import LeftSidebar from '@/components/LeftSidebar';
-import Footer from '@/components/Footer';
+import Header from '@/components/navigation/Header';
+import LeftSidebar from '@/components/navigation/LeftSidebar';
+import Footer from '@/components/navigation/Footer';
 import { useState } from 'react';
 import style from '@/styles/components/posts.module.css';
 

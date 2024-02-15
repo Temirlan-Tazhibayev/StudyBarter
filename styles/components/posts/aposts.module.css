@@ -21,7 +21,12 @@
     flex-wrap: nowrap;
 }
 
-
+.navigation {
+    display: flex;
+    padding: 10px;
+    flex-direction: row;
+    align-items: center;
+}
 .class_filter {
     display: flex;
     align-items: center;
@@ -31,7 +36,33 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
-
+.n_button {
+    --theme-button-bg-color: #1b75d0;
+    --theme-button-font-color: #ffffff;
+    background-color: var(--theme-button-bg-color);
+    color: var(--theme-button-font-color);
+    border-radius: 6px;
+    display: inline-flex;
+    text-align: center;
+    text-decoration: none;
+    line-height: var(30px);
+    padding: 10px;
+}
+.n_button:disabled {
+    border-radius: 6px;
+    display: inline-flex;
+    text-align: center;
+    text-decoration: none;
+    line-height: var(30px);
+    padding: 10px;
+    background-color: gray; /* Серый цвет фона */
+    color: white; /* Белый цвет текста */
+    cursor: not-allowed; /* Изменение курсора на "not-allowed" (запрещающий) */
+}
+.n_page_number {
+    display: flex;
+    padding-inline: 10px;
+}
 .headline {
     flex-wrap: wrap;
     display: flex;

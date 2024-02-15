@@ -1,95 +1,71 @@
 import { useState, useEffect } from 'react';
 
 
-import LeftSidebar from '@/components/LeftSidebar';
-import Posts from '@/components/Posts';
+import LeftSidebar from '@/components/navigation/LeftSidebar';
+import Posts from '@/components/posts/SearchPosts';
+import style from '@/styles/pages/posts.module.css';
+import { PostsRightbar } from '@/components/navigation/PostsRightbar';
 
-export default function Questions({data}) {
-  const [questions, setQuestions] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const itemsPerPage = 10;
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const tab = urlParams.get('tab');
-    const page = parseInt(urlParams.get('page')) || 1;
-    const query = urlParams.get('query')
-    setCurrentPage(page);
-    const fetchData = async () => {
-      try {
-        let apiUrl = 'http://localhost:3000/api/questions';
-
-        const params = {
-          tab: tab,
-          page: page,
-          limit: itemsPerPage,
-          query: query
-        };
-
-        const queryString = new URLSearchParams(params).toString();
-        if (queryString) {
-          apiUrl += `?${queryString}`;
-        }
-
-        const response = await fetch(apiUrl, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-
-        const data = await response.json();
-
-        setQuestions(data);
-      } catch (error) {
-        console.error(error);
-      } 
-    };
-
-    fetchData();
-  }, []); // Убираем зависимости из массива, чтобы useEffect сработал только при монтировании компонента
+export default function Questions({ questions, currentPage }) {
   return (
     <>
-      <div className='container'>
+      <div className={style.container}>
         <LeftSidebar/>
-        <div className='content'>
+        <div className={style.content}>
           <Posts questions={questions} page={currentPage}/>
-          <div className='sideBar'>
-            <div className='sidebar-elements'>
-              <div className='sidebarWidgets_tags'>
-                <div className='sidebarWidgets_tags_header'>
-                  <h2>Current Tags</h2>
-                </div>
-                <div className='sidebarWidgets_tags_content'>
-                  <div className='sidebartags_ss'>
-                    <ul className='currenttags'>
-                      {(() => {
-                        const uniqueTags = new Set();
-                        questions.forEach(question => {
-                          question.tags.forEach(tag => {
-                            uniqueTags.add(tag);
-                          });
-                        });
-
-                        return Array.from(uniqueTags).map(tag => (
-                          <li key={tag}>
-                            <a className="postTag">{tag}</a>
-                          </li>
-                        ));
-                      })()}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <PostsRightbar questions={questions}/>
         </div>
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { tab, page, query } = context.query;
+
+  const itemsPerPage = 10;
+
+  try {
+    let apiUrl = 'http://localhost:3000/api/questions';
+
+    const params = {
+      tab: tab,
+      page: page,
+      limit: itemsPerPage,
+      query: query
+    };
+
+    const queryString = new URLSearchParams(params).toString();
+    if (queryString) {
+      apiUrl += `?${queryString}`;
+    }
+
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    const questions = await response.json();
+
+    return {
+      props: {
+        questions,
+        currentPage: parseInt(page) || 1
+      }
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      props: {
+        questions: [],
+        currentPage: 1
+      }
+    };
+  }
 }

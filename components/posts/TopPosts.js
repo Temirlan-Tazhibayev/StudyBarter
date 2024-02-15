@@ -2,7 +2,7 @@ import Image from 'next/image';
 import avatarUser from '@/public/svg/avatar-user.svg';
 import iconFilter from '@/public/svg/filter.svg';
 
-import style from '@/styles/components/tposts.module.css'
+import style from '@/styles/components/posts/tposts.module.css'
 
 export default function TopPosts({questions}) {
     return (

@@ -1,31 +1,13 @@
+import '@/styles/globals.css';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from '@/components/navigation/Header';
+import Footer from '@/components/navigation/Footer';
 
-import '../styles/globals.css';
+import '../styles/components/tags/tags.css';
 
-import '../styles/main.css';
-
-import '../styles/post.css';
-
-import '../styles/navigation.css';
-
-import '../styles/components/tags.css'
-
-// import '../styles/components/header.css'
-
-import '../styles/question.css'
-
-import '../styles/container.css'
 import Head from 'next/head';
 
-import {useEffect} from 'react'
-
-function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-     
-  }, []);
-
+export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
@@ -43,5 +25,6 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-
-export default MyApp;
+export const getStaticProps = (async () => {
+  return { props: [] }
+}) 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import style from '@/styles/components/posts.module.css'
+import style from '@/styles/components/posts/aposts.module.css'
 
 const AComponent = () => {
     const [selectedFilterOptions, setSelectedFilterOptions] = useState({

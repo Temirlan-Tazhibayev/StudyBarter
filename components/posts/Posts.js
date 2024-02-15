@@ -2,28 +2,91 @@ import Image from 'next/image';
 import avatarUser from '@/public/svg/avatar-user.svg';
 import iconFilter from '@/public/svg/filter.svg';
 
-import style from '@/styles/components/posts.module.css'
+import style from '@/styles/components/posts/aposts.module.css'
 import { useState, useEffect } from 'react';
 
-import AComponent from './f/a';
+import AComponent from '../a/a';
+import { useRouter } from 'next/router';
 
-export default function Posts({questions, page}) {
+export default function Posts({ questions, page}) {
     const [showForm, setShowForm] = useState(false);
- 
-    
-    const nextPage = () => {
-        page = page+1 ;
-    };
-      
-    const prevPage = () => {
-        page = page - 1 ;
-    };
-  
+    const router = useRouter();
       
     const toggleForm = () => {
         setShowForm(!showForm);
     };
 
+    
+    const nextPage = () => {
+        const { query, tab } = router.query;
+        const itemsPerPage = 10;
+        let params = {
+          limit: itemsPerPage,
+          page: page + 1,
+        };
+          
+        switch (true) {
+          case tab !== undefined:
+            params["tab"] = tab;
+            break
+          case query !== undefined:
+            params["query"] = query
+            break  
+        }
+        const queryString = new URLSearchParams(params).toString();
+        
+        router.push(`/questions?${queryString}`);
+    };
+      
+    const prevPage = () => {
+        const { query, tab } = router.query;
+
+        const itemsPerPage = 10;
+        let params = {
+          limit: itemsPerPage,
+          page: page - 1,
+        };
+          
+        switch (true) {
+          case tab !== undefined:
+            params["tab"] = tab;
+            break
+        
+          case query !== undefined:
+            params["query"] = query
+            break  
+          
+        }
+      
+        const queryString = new URLSearchParams(params).toString();
+        
+        router.push(`/questions?${queryString}`);
+        
+    };
+
+
+    const handleTabChange = (tab) => {
+        const { query, page } = router.query;
+        let params = {
+            page: page, 
+        }; 
+        switch (true) {
+            case tab !== undefined:
+                params["tab"] = tab;
+                break
+            case page !== undefined:
+                params["page"] = page;
+                break
+            case query !== undefined:
+                params["query"] = query
+                break    
+            default:
+                params["page"] = 1;
+        }
+        const queryString = new URLSearchParams(params).toString();
+        
+        router.push(`/questions?${queryString}`);
+    };
     return (
         <>
             <div className={style.mainBar}>
@@ -38,9 +101,9 @@ export default function Posts({questions, page}) {
                     <span className={style.count}>0 questions</span>
                     <div>
                         <div className={style.tab_buttons}>
-                            <a href='/questions?tab=new' className={style.tab_button_left}>New</a>
-                            <a href='/questions?tab=week' className={style.tab_button_center}>Week</a>
-                            <a href='/questions?tab=month' className={style.tab_button_right}>Month</a>
+                            <a onClick={() => handleTabChange('new')} className={style.tab_button_left}>New</a>
+                            <a onClick={() => handleTabChange('week')} className={style.tab_button_center}>Week</a>
+                            <a onClick={() => handleTabChange('month')} className={style.tab_button_right}>Month</a>
                         </div>
                     </div>
                     <div>
@@ -114,10 +177,10 @@ export default function Posts({questions, page}) {
                             ))}
                     </div>
 
-                    <div>
-                        <button href={"/questions?page="+page-1} onClick={prevPage} disabled={page === 1}>Previous Page</button>
-                        <span>Page {page}</span>
-                        <button href={"/questions?page="+page+1}>Next Page</button>
+                    <div className={style.navigation}>
+                        <a className={style.n_button} onClick={prevPage} disabled={page === 1}>Previous Page</a>
+                        <span className={style.n_page_number}>{page}</span>
+                        <a className={style.n_button} onClick={nextPage}>Next Page</a>
                     </div>
                 </div>
             </div>

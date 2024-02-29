@@ -4,55 +4,8 @@ import TopPosts from '@/components/posts/TopPosts';
 import { PostsRightbar } from '@/components/navigation/PostsRightbar';
 
 import style from '@/styles/pages/posts.module.css';
-export default function Home() {
-  const [questions, setQuestions] = useState([]);
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const tab = urlParams.get('tab');
-
-    const fetchData = async () => {
-      try {
-        let apiUrl = 'http://localhost:3000/api/questions';
-
-        // Добавляем параметры запроса, если они заданы
-        const params = {};
-        if (tab) {
-          params.tab = tab;
-        }
-        // Устанавливаем лимит на количество вопросов
-        params.limit = 10;
-
-        // Формируем строку запроса на основе параметров
-        const queryString = new URLSearchParams(params).toString();
-        if (queryString) {
-          apiUrl += `?${queryString}`;
-        }
-
-        const response = await fetch(apiUrl, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            // Другие заголовки...
-          },
-          // Другие параметры запроса, если необходимо
-          // body: JSON.stringify(data),
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-
-        const data = await response.json();
-        setQuestions(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+export default function Home({questions}) {
+  
   return (
     <>
       <div className={style.container}>
@@ -64,4 +17,43 @@ export default function Home() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  try {
+    const urlParams = new URLSearchParams(context.req.url.split('?')[1]);
+    const tab = urlParams.get('tab');
+
+    let apiUrl = 'http://localhost:3000/api/questions';
+    const params = {};
+    if (tab) {
+      params.tab = tab;
+    }
+    params.limit = 10;
+    const queryString = new URLSearchParams(params).toString();
+    if (queryString) {
+      apiUrl += `?${queryString}`;
+    }
+
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        // Other headers...
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    const data = await response.json();
+
+    // Pass data as props to the component
+    return { props: { questions: data } };
+  } catch (error) {
+    console.error(error);
+    // Handle errors or return an empty array
+    return { props: { questions: [] } };
+  }
 }

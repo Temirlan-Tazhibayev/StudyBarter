@@ -7,6 +7,9 @@ import '../styles/components/tags/tags.css';
 
 import Head from 'next/head';
 
+import FAQAssistant from '@/components/vidget/chatbot';
+
+
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -18,13 +21,12 @@ export default function App({ Component, pageProps }) {
       <Header />
       <main>
         <Component {...pageProps} />
+        
       </main>
+
+      <FAQAssistant/>
       <Footer />
 
     </>
   );
 }
-
-export const getStaticProps = (async () => {
-  return { props: [] }
-}) 

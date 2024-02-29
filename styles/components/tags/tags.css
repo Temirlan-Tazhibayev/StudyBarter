@@ -1,0 +1,87 @@
+/* Basic styles for the main headline and body text */
+.headline {
+    font-size: 1.5rem; /* Adjust as needed */
+    margin-bottom: 1rem;
+}
+
+.headline-description {
+    font-size: 1rem; /* Adjust as needed */
+    max-width: 36rem; /* Adjust as needed */
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Styles for the input container */
+.input-container {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.input {
+    padding: 0.5rem 1rem; /* Adjust as needed */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 20%; /* Adjust as needed */
+    padding-left: 2rem; /* Adjust as needed */
+}
+
+.input-icon {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 0.5rem; /* Adjust as needed */
+    transform: translateY(-50%);
+    width: 1.5rem; /* Adjust as needed */
+    height: auto; /* Adjust as needed */
+}
+
+
+#tags_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tag-card {
+    flex: 0 1 calc(25% - 20px);
+    max-width: calc(25% - 20px); /* Adjust as needed */
+}
+
+.tag-card-content {
+
+    padding: 20px;
+
+    border: 1px solid #ccc; /* Adjust as needed */
+    border-radius: 0.25rem; /* Adjust as needed */
+}
+
+.tag-name {
+    margin-bottom: 12px;
+}
+
+a .post-tag {
+    color: #0077cc;
+}
+
+.tag-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.question-count {
+    justify-content: start;
+    font-weight: bold;
+    padding-right: 15px;
+}
+
+.questions-activity {
+    justify-content: end;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.tag-description {
+    margin-bottom: 12px;
+    color: #555;
+    font-size: 0.9rem;
+}

@@ -54,10 +54,10 @@ export default function Header() {
             <nav className={style.authorize}>
               <ol className={style.topPanelContent}>
                 <li className={style.topPanelContentElement}>
-                  <a href='/#' className={style.btn}>Login</a>
+                  <a href='/users/login' className={style.btn}>Login</a>
                 </li>
                 <li className={style.topPanelContentElement}>
-                  <a href='/#'  className={style.btn}>Sign Up</a>
+                  <a href='/users/signup'  className={style.btn}>Sign Up</a>
                 </li>
               </ol>
             </nav>

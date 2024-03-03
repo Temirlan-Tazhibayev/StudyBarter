@@ -21,7 +21,6 @@ export default function App({ Component, pageProps }) {
       <Header />
       <main>
         <Component {...pageProps} />
-        
       </main>
 
       <FAQAssistant/>

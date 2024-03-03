@@ -46,10 +46,11 @@ const FAQAssistant = () => (
         {
             id: '8',
             message: '{previousValue} your question will be delivered to Admin)',
+
             trigger: '2',
         },
-
     ]}
+
     floating={true}
   />
 );

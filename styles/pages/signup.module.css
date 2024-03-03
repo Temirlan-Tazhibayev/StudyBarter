@@ -1,0 +1,114 @@
+.container {
+    height: 100%;
+    width: 100%;
+
+    min-height: 800px;
+
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    
+    background-color: hsl(210,8%,95%);
+}
+
+
+.content {
+    padding-top: 5%;
+    min-width: 30vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.authorize_by {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-block-end: 5%;
+}
+
+.credentials {
+    display: flex;
+    flex-direction: column;
+    padding-block: 5%;
+}
+.credentialsElement {
+    padding-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+}
+.credentialsElementNote {
+    color: hsl(210,8%,42%)
+}
+
+.formContainer {
+    width: 80%;
+    padding: 10%;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.formContainerElement {
+    display: flex;
+    flex-direction: column;
+}
+
+.formContainerElementLabel {
+
+}
+
+.formContainerElementInput {
+
+}
+
+
+
+.btn {
+    /* I did it */
+    --theme-button-bg-color: #ffffff;
+    --theme-button-font-color: #000000;
+    --theme-button-border-color: #000000;
+    justify-content: center;
+
+    background-color: var(--theme-button-bg-color);
+    color: var(--theme-button-font-color);
+
+    border: 1px solid var(--theme-button-border-color);
+    border-radius: 6px;
+
+    font-size: var(13px);
+    
+    height: 100%;
+    width: 100%;
+
+    padding: 1vh;
+
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    
+    font-family: inherit;
+    font-weight: normal;
+    
+    text-align: center;
+    text-decoration: none;
+
+    line-height: var(30px);
+    
+    position: relative;
+    outline: none;
+
+    overflow: hidden;
+  }
+  
+  /* Filled button */
+  .btn:hover {
+    filter: brightness(85%);
+  }

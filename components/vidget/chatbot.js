@@ -1,6 +1,29 @@
 import React, { Component } from 'react';
 import ChatBot, { Loading } from 'react-simple-chatbot';
 
+
+const sendQuestionToAdmin = async (question) => {
+    try {
+      const response = await fetch('/api/chatbot', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ question }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to send question to admin');
+      }
+  
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error sending question to admin:', error.message);
+      throw error;
+    }
+  };
+
 const FAQAssistant = () => (
   <ChatBot
     steps={[
@@ -41,12 +64,18 @@ const FAQAssistant = () => (
         {
             id: '7',
             user: true,
+            validator: (value) => {
+                
+                sendQuestionToAdmin(value);
+
+                
+                return true;
+            },
             trigger: '8',
         },
         {
             id: '8',
             message: '{previousValue} your question will be delivered to Admin)',
-
             trigger: '2',
         },
     ]}

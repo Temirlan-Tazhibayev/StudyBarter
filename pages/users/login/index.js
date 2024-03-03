@@ -31,6 +31,9 @@ export default function Login() {
                     <input>
                     </input>
                 </div>
+                <div className={style.formContainerElement}>
+                    <div className={style.btnLogin}>Log in</div>
+                </div>
             </form>
         </div>
       </div>

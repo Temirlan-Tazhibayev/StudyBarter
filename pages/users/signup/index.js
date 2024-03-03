@@ -25,7 +25,7 @@ export default function Signup() {
                     </div>
                 </div>
                 <div className={style.authorize_by}>
-                    <div className={style.btn}>
+                    <div className={style.btnSignup}>
                         Sign Up
                     </div>    
                 </div>

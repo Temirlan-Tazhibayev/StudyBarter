@@ -112,3 +112,51 @@
   .btn:hover {
     filter: brightness(85%);
   }
+
+
+
+
+
+  .btnSignup {
+    --theme-button-bg-color: #1b75d0;
+    --theme-button-font-color: #ffffff;
+    --theme-button-border-color: #000000;
+    justify-content: center;
+
+    background-color: var(--theme-button-bg-color);
+    color: var(--theme-button-font-color);
+
+    border: 1px solid var(--theme-button-border-color);
+    border-radius: 6px;
+
+    font-size: var(13px);
+    
+    height: 100%;
+    width: 100%;
+
+    padding-top: 1vh;
+    padding: 1vh;
+
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    
+    font-family: inherit;
+    font-weight: normal;
+    
+    text-align: center;
+    text-decoration: none;
+
+    line-height: var(30px);
+    
+    position: relative;
+    outline: none;
+
+    overflow: hidden;
+  }
+  
+/* Filled button */
+.btnSignup:hover {
+filter: brightness(85%);
+}

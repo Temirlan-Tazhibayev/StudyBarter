@@ -65,10 +65,7 @@ const FAQAssistant = () => (
             id: '7',
             user: true,
             validator: (value) => {
-                
                 sendQuestionToAdmin(value);
-
-                
                 return true;
             },
             trigger: '8',

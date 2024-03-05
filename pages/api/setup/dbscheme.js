@@ -32,6 +32,25 @@ export default async function handler(req, res) {
                 }
             };
 
+            const userCollectionSchema = {
+                validator: {
+                    $jsonSchema: {
+                        bsonType: "object",
+                        required: ["username", "email", "password", "createdAt", "updatedAt"],
+                        properties: {
+                            id: { bsonType: "int" },
+                            username: { bsonType: "string" },
+                            email: { bsonType: "string" },
+                            password: { bsonType: "string" },
+                            createdAt: { bsonType: "date" },
+                            updatedAt: { bsonType: "date" },
+                            isAdmin: { bsonType: "bool" } 
+                        }
+                    }
+                }
+            };
+            await db.createCollection('Users', userCollectionSchema);
+
             // Создаем коллекцию с указанной схемой
             await db.createCollection('Questions', collectionSchema);
             

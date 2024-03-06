@@ -95,7 +95,8 @@
     font-size: var(--fs-title) !important;
 }
 .mainbarBody {
-    
+    display: flex;
+    flex-direction: row;
 }
 
 .mainbarBodySummary {
@@ -127,4 +128,82 @@
     border: 1px solid black;
     border-radius: 4px;
     padding: 5%;
+}
+
+
+.SettingsNav {
+    display: flex;
+    padding-right: 5%;
+    width: 30%;
+}
+
+.SettingsNavElement {
+    padding: 5%;
+    width: 100%;
+    box-sizing: content-box;
+}
+
+.SettingsBody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.SettingsNavElementButton {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 1px solid transparent;
+    padding: 6px;
+    width: 100%;
+    display: flex;
+    
+    background-color: white;
+}
+
+.SettingsNavElementButton.active {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 1px solid rgb(241, 141, 78);
+    background-color: rgb(241, 141, 78);
+    padding: 6px;
+    width: 100%;
+    display: flex;
+    color:white;
+}
+
+.SettingsNavElementButton:hover {
+    filter: brightness(85%);
+}
+
+.sbody {
+    padding-top: 5px;
+    flex-direction: column;
+}
+
+.header {
+    border: 1px solid black
+}
+
+
+.sbodyElement {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.deleteaccount {
+    display: block;
+    background-color: rgb(163, 33, 33);
+    border: 1px solid rgb(163, 33, 33);
+    border-radius: 15px;
+    padding: 1%;
+    color: white;
+}
+
+.deleteaccount:hover {
+    filter: brightness(85%)
 }

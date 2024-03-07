@@ -1,0 +1,209 @@
+
+.container {
+    height: 100%;
+    min-height: 800px;
+    max-width: 1264px;
+    width: 100%;
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mainbarNavElement {
+    padding-inline: 1%;
+    border-radius: 15px;
+    color: inherit;
+}
+.mainbarNavElement:hover {
+    filter: brightness(85%);
+}
+
+.mainbarNavElement.active {
+    border: 1px solid rgb(241, 141, 78);
+    background-color: rgb(241, 141, 78);
+    color: white;
+}
+
+
+.content {
+    width: calc(100% - 164px);
+    display: flex;
+    flex-grow: 10;
+    flex-basis: 0%;
+}
+
+.mainbar {
+    display: flex;
+    padding: 4%;
+    flex-direction: column;
+    width: 100%;
+}
+.userLastSeen {
+    color: var(--black-400) !important;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0;
+    list-style: none; /* Убираем маркеры у списка */
+}
+
+.userLastSeen li {
+    margin-right: 10px; /* Пространство между элементами списка */
+}
+
+.userLastSeen .flex--item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Запрет переноса на новую строку */
+}
+
+.userLastSeen .flex--item .flex--item {
+    margin-left: 10px; /* Пространство между иконкой и текстом */
+}
+
+
+.mainbarHead {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.userdata {
+    padding: 4%;
+       
+}
+.userNameFont {
+    font-size: var(--fs-headline2) !important;
+}
+.mainbarNav {
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+
+}
+.profileView {
+    border-radius: var(--br-md) !important;
+
+}
+
+
+.fontType {
+    font-size: var(--fs-title) !important;
+}
+.mainbarBody {
+    display: flex;
+    flex-direction: row;
+}
+
+.mainbarBodySummary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+    
+}
+.mainbarBodySummaryEl {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: calc(50% - 20px);
+    max-width: calc(50% - 20px); 
+}
+
+.mainbarBodySummaryElHeader {
+    max-width: calc(50% - 8px);
+
+}
+.mainbarBodySummarySort {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.mainbarBodySummaryElBody {
+    display: flex;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5%;
+}
+
+
+.SettingsNav {
+    display: flex;
+    padding-right: 5%;
+    width: 30%;
+}
+
+.SettingsNavElement {
+    padding: 5%;
+    width: 100%;
+    box-sizing: content-box;
+}
+
+.SettingsBody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.SettingsNavElementButton {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 1px solid transparent;
+    padding: 6px;
+    width: 100%;
+    display: flex;
+    
+    background-color: white;
+}
+
+.SettingsNavElementButton.active {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 1px solid rgb(241, 141, 78);
+    background-color: rgb(241, 141, 78);
+    padding: 6px;
+    width: 100%;
+    display: flex;
+    color:white;
+}
+
+.SettingsNavElementButton:hover {
+    filter: brightness(85%);
+}
+
+.sbody {
+    padding-top: 5px;
+    flex-direction: column;
+}
+
+.header {
+    border: 1px solid black
+}
+
+
+.sbodyElement {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.deleteaccount {
+    display: block;
+    background-color: rgb(163, 33, 33);
+    border: 1px solid rgb(163, 33, 33);
+    border-radius: 15px;
+    padding: 1%;
+    color: white;
+}
+
+.deleteaccount:hover {
+    filter: brightness(85%)
+}

@@ -23,12 +23,3 @@ export default function Synonyms() {
   );
 }
 
-// export async function getStaticProps() {
-// //   try {
-// //   } catch (error) {
-// //     console.error(error);
-// //     return { props: { questions: [] } }; // Возвращение пустого массива в случае ошибки
-// //   }
-// }
-
-

@@ -1,0 +1,31 @@
+
+.Buttons {
+    padding: 1%;
+    display: flex;
+    max-width: calc(50% - 20px);
+    color: rgb(44, 44, 180)
+}
+
+
+.LeftButton {
+    padding: 1%;
+    border: 1px solid black;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    color: inherit;
+}
+
+
+.CenterButton {
+    padding: 1%;
+    border: 1px solid black;
+    color: inherit;
+}
+
+.RightButton {
+    padding: 1%;
+    border: 1px solid black;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: inherit;
+}

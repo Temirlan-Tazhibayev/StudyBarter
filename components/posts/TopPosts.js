@@ -48,6 +48,7 @@ export default function TopPosts({questions}) {
                                     <div className={style.postSummaryContentMeta}>
                                         <div className={style.post_summary_content}>
                                             <ul className={style.tag_element}>
+                                                
                                                 {question.tags.map(tag => (
                                                 <li key={tag}>
                                                     <a className={style.postTag}>{tag}</a>

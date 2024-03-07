@@ -2,15 +2,37 @@ import Head from 'next/head';
 import Header from '@/components/navigation/Header';
 import LeftSidebar from '@/components/navigation/LeftSidebar';
 import Footer from '@/components/navigation/Footer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import style from '@/styles/pages/posts.module.css';
+import {jwtDecode} from 'jwt-decode';
 
 export default function Ask() {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [expectations, setExpectations] = useState('');
   const [tags, setTags] = useState('');
+  const [user, setUser] = useState(null);
 
+
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    console.log(token);
+    
+    if (!token) {
+      router.push('/users/login');
+      return;
+    }
+
+    try {
+        const decodedToken =  jwtDecode(token);
+        console.log(decodedToken)
+        setUser(decodedToken);
+    } catch (error) {
+      console.log(error)
+    }
+  }, []);
+  
   // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,11 +43,15 @@ export default function Ask() {
       return; // Don't submit the form
     }
 
+    const response = await fetch(`http://localhost:3000/api/user/data?userId=${user.userId}`);
+    const userData = await response.json(); // Добавляем await для ожидания завершения операции
+    // После того, как получены данные о пользователе, формируем объект formData
     const formData = {
       title,
       text,
       expectations,
-      tags
+      tags,
+      author: userData.user.username
     };
 
     try {

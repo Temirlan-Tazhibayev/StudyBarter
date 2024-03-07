@@ -4,7 +4,6 @@ import StudyBarterLogo from '@/components/svg/StudyBarterLogo';
 import GoogleLogo from '@/public/svg/Google__G__logo.svg';
 import Image from 'next/image';
 
-
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -26,8 +25,13 @@ export default function Login() {
         }
   
         const data = await response.json();
+        const { token } = data;
+
+        // Сохранить токен в состоянии
+        localStorage.setItem('token', JSON.stringify(token));
+
         // Handle successful login, e.g., store user data in state or localStorage
-        console.log('User logged in:', data.user);
+        console.log('User logged in:', data.user._id);
       } catch (error) {
         setError(error.message);
       }

@@ -1,19 +1,20 @@
 import style from '@/styles/pages/users.module.css';
-
-import StudyBarterLogo from '@/components/svg/StudyBarterLogo';
-import GoogleLogo from '@/public/svg/Google__G__logo.svg';
 import Image from 'next/image';
 import LeftSidebar from '@/components/navigation/LeftSidebar';
 
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import SortButtons from '@/components/a/SortButtons';
+import {jwtDecode} from 'jwt-decode';
 export default function User() {
 
     const [activeTab, setActiveTab] = useState('Activity');
+    const [user, setUser] = useState(null);
+    const [userdata, setUserdata] = useState(null); // State to store user data
+
     const handleTabChange = (tab) => {
         setActiveTab(tab);
     };
-    const [settingTab, setSettingTab] = useState('PersonalInformation');
+    const [settingTab, setSettingTab] = useState('EditProfile');
     const handleSettingTabChange = (tab) => {
         setSettingTab(tab);
     } 
@@ -22,12 +23,43 @@ export default function User() {
 
     const handleDeleteProfile = () => {
         if (isConfirmed) {
-            
-            
-
             console.log("Deleting profile...");
         } else {
             alert("Please confirm that you understand the implications.");
+        }
+    };
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            router.push('/users/login');
+            return;
+        }
+        try {
+            const decodedToken = jwtDecode(token);
+            setUser(decodedToken);
+
+            // Fetch user data after setting user state
+            fetchUserData(decodedToken.userId);
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+
+    const fetchUserData = async (userId) => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/user/data?userId=${userId}`);
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+
+            const userData = await response.json();
+            console.log(userData);
+            setUserdata(userData);
+        } catch (error) {
+            console.error(error);
+            // Handle errors if needed
         }
     };
 
@@ -42,25 +74,15 @@ export default function User() {
                                 <Image src={"/png/default-user-image.png"} width={100} height={100}></Image>
                             </div>
                             <div className={style.userdata}>
-                                <div className={style.userNameFont}>Name Surename</div>
+                                <div className={style.userNameFont}>{userdata ? userdata.user.username: <div>Loading</div>}</div>
                                 <ul class={style.userLastSeen}>
                                     <li class="flex--item">
-                                        <div class="d-flex gs4 gsx ai-center">
+                                        <div class={style.memberfor}>
                                             <div class="flex--item fc-black-350">
                                                 <svg aria-hidden="true" class="svg-icon iconCake" width="18" height="18" viewBox="0 0 18 18"><path d="M9 4.5a1.5 1.5 0 0 0 1.28-2.27L9 0 7.72 2.23c-.14.22-.22.48-.22.77 0 .83.68 1.5 1.5 1.5Zm3.45 7.5-.8-.81-.81.8c-.98.98-2.69.98-3.67 0l-.8-.8-.82.8c-.49.49-1.14.76-1.83.76-.55 0-1.3-.17-1.72-.46V15c0 1.1.9 2 2 2h10a2 2 0 0 0 2-2v-2.7c-.42.28-1.17.45-1.72.45-.69 0-1.34-.27-1.83-.76Zm1.3-5H10V5H8v2H4.25C3 7 2 8 2 9.25v.9c0 .81.91 1.47 1.72 1.47.39 0 .77-.14 1.03-.42l1.61-1.6 1.6 1.6a1.5 1.5 0 0 0 2.08 0l1.6-1.6 1.6 1.6c.28.28.64.43 1.03.43.81 0 1.73-.67 1.73-1.48v-.9C16 8.01 15 7 13.75 7Z"></path></svg>
                                             </div>
                                             <div class="flex--item">
-                                                Member for <span title="2024-01-28 13:47:22Z">38 days</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="flex--item">
-                                        <div class="d-flex gs4 gsx ai-center">
-                                            <div class="flex--item fc-black-350">
-                                                <svg aria-hidden="true" class="svg-icon iconClock" width="18" height="18" viewBox="0 0 18 18"><path d="M9 17c-4.36 0-8-3.64-8-8 0-4.36 3.64-8 8-8 4.36 0 8 3.64 8 8 0 4.36-3.64 8-8 8Zm0-2c3.27 0 6-2.73 6-6s-2.73-6-6-6-6 2.73-6 6 2.73 6 6 6ZM8 5h1.01L9 9.36l3.22 2.1-.6.93L8 10V5Z"></path></svg>
-                                            </div>
-                                            <div class="flex--item">
-                                                Last seen this week
+                                            Create at <span title="2024-01-28 13:47:22Z">{userdata ? userdata.user.createdAt: <div>Loading</div>}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -125,14 +147,12 @@ export default function User() {
                                             <li className={style.SettingsNavElement}>PERSONAL INFORMATION</li>
                                             <li className={style.SettingsNavElement}>
                                                 <a className={settingTab === 'EditProfile' ? `${style.SettingsNavElementButton} ${style.active}` : style.SettingsNavElementButton} onClick={() => handleSettingTabChange('EditProfile')}>Edit Profile Settings</a>
-                                            
                                             </li>
                                             <li className={style.SettingsNavElement}>
                                                 <a className={settingTab === 'EditEmail' ? `${style.SettingsNavElementButton} ${style.active}` : style.SettingsNavElementButton} onClick={() => handleSettingTabChange('EditEmail')}>Edit Email Settings</a>
                                             </li>
                                             <li className={style.SettingsNavElement}>
                                                 <a className={settingTab === 'DeleteProfile' ? `${style.SettingsNavElementButton} ${style.active}` : style.SettingsNavElementButton} onClick={() => handleSettingTabChange('DeleteProfile')}>Delete Profile</a>
-
                                             </li>
                                         </ul>
                                     </nav>
@@ -204,3 +224,28 @@ export default function User() {
         </>
     );
 }
+
+
+
+export async function getServerSideProps(context) {
+    try {
+        const response = await fetch(`http://localhost:3000/api/user/data?userId=${user.userId}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+    
+        const userdata = await response.json();
+        console.log(userData)
+        
+
+
+
+    // Pass data as props to the component
+        return { props: { userdata: userdata } };
+    } catch (error) {
+        console.error(error);
+        // Handle errors or return an empty array
+        return { props: { userdata: [] } };
+    }
+}
+  

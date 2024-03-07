@@ -3,20 +3,22 @@ import { connectToDatabase } from '@/db.js';
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     // Parse data from the request body
-    const { title, text, expectations, tags } = req.body;
+    const { title, text, expectations, tags, author } = req.body;
     console.log(req.body)
     try {
       // Connect to the database
       const db = await connectToDatabase();
       const collection = db.collection('Questions');
 
-
+      // Получаем имя пользователя из сессии или из вашего механизма аутентификации
+      const author = req.session.username; // Предполагается, что у вас есть сессия с именем пользователя
+      console.log(author)
       const questionData = {
         "title": title,
         "text": text,
         "expectations": expectations,
         "tags": [tags],
-        "author": null,
+        "author": author,
         "views": 0,
         "likes": 0,
         "comments": 0,

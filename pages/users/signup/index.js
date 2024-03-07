@@ -1,37 +1,46 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router'; // Импортируем useRouter
 import style from '@/styles/pages/signup.module.css';
 import StudyBarterLogo from '@/components/svg/StudyBarterLogo';
 import GoogleLogo from '@/public/svg/Google__G__logo.svg';
 import Image from 'next/image';
 
 export default function Signup() {
-    const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-  
-    const handleSignup = async (e) => {
-      e.preventDefault();
-      try {
-        const response = await fetch('http://localhost:3000/api/signup/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, username,  password }),
-        });
-  
-        if (!response.ok) {
-          throw new Error('Failed to sign up');
-        }
-  
-        const data = await response.json();
-        // Handle successful signup, e.g., redirect to login page
-        console.log('User signed up:', data.userId);
-      } catch (error) {
-        setError(error.message);
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:3000/api/signup/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, username,  password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to sign up');
       }
-    };
+
+      const data = await response.json();
+      // Handle successful signup
+      console.log('User signed up:', data.userId);
+
+      // Сохраняем имя пользователя в LocalStorage
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('username', username);
+      }
+
+      // Перенаправляем пользователя на страницу /
+      window.location.href = '/';
+    } catch (error) {
+      setError(error.message);
+    }
+  };
   
     return (
       <>

@@ -13,7 +13,7 @@ export default async function handler(req, res) {
             const newQuestion = {
                 title,
                 text,
-                tags,
+                tags: [tags],
                 author,
                 views: 0,
                 likes: 0,

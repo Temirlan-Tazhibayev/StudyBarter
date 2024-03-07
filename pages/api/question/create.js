@@ -7,7 +7,7 @@ export default async function handler(req, res) {
         const { title, text, tags, author } = req.body;
 
         try {
-            const { db } = await connectToDatabase();
+            const db = await connectToDatabase();
             const questionsCollection = db.collection('Questions');
 
             const newQuestion = {

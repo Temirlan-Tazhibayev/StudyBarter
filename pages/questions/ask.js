@@ -30,7 +30,7 @@ export default function Ask() {
 
     try {
       // Send the form data to the server
-      const response = await fetch('/api/uploadq', {
+      const response = await fetch('http://localhost:3000/api/question/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
